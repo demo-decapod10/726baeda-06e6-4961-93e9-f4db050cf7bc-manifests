@@ -1,0 +1,29 @@
+# Source: cluster-api-byoh/templates/machinedeployment.yaml
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: 726baeda-md-normal
+  namespace: 726baeda
+  annotations:
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "5"
+spec:
+  clusterName: 726baeda
+  replicas: 2
+  selector:
+    matchLabels: null
+  template:
+    metadata:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+          kind: KubeadmConfigTemplate
+          name: 726baeda-md-normal
+      clusterName: 726baeda
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: ByoMachineTemplate
+        name: 726baeda-md-normal
+      version: v1.22.3
+

@@ -1,0 +1,12 @@
+# Source: cluster-api-byoh/templates/machinedeployment.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: ByoMachineTemplate
+metadata:
+  name: 726baeda-md-normal
+  namespace: 726baeda
+spec:
+  template:
+    spec:
+      selector:
+        matchLabels:
+          role: worker
